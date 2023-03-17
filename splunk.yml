@@ -1,0 +1,11 @@
+splunk:
+    conf:
+      indexes:
+        directory: /opt/splunk/etc/apps/search/local
+        content:
+          kong-metrics:
+            coldPath: $SPLUNK_DB/kong-metrics/colddb
+            datatype: metric
+            homePath: $SPLUNK_DB/kong-metrics/db
+            maxTotalDataSizeMB: 512000
+            thawedPath: $SPLUNK_DB/kong-metrics/thaweddb
