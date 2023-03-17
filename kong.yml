@@ -1,0 +1,10 @@
+ _format_version: "3.0"
+ _transform: true
+
+ services:
+ - url: http://myflaskwebservice:5000
+   name: flaskapi_service
+   routes:
+   - name: flaskapi_route
+     paths:
+     - /query
