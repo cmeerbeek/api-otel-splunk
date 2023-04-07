@@ -38,7 +38,8 @@ services:
     ports:
       - "6565:6565"
     environment:
-      - K6_OUT=json=/jsonoutput/results.json
+      - K6_OUT=statsd
+      - K6_STATSD_ADDR=splunk-kong:8125
     volumes:
       - ./scripts:/scripts
       - ./results:/jsonoutput

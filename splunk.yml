@@ -9,3 +9,16 @@ splunk:
             homePath: $SPLUNK_DB/kong-metrics/db
             maxTotalDataSizeMB: 512000
             thawedPath: $SPLUNK_DB/kong-metrics/thaweddb
+          k6-metrics:
+            coldPath: $SPLUNK_DB/k6-metrics/colddb
+            datatype: metric
+            homePath: $SPLUNK_DB/k6-metrics/db
+            maxTotalDataSizeMB: 512000
+            thawedPath: $SPLUNK_DB/k6-metrics/thaweddb
+      inputs:
+        directory: /opt/splunk/etc/system/local
+        content:
+          udp://8125:
+            connection_host: ip
+            index: k6-metrics
+            sourcetype: statsd
