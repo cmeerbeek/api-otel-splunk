@@ -38,10 +38,10 @@ services:
     ports:
       - "6565:6565"
     environment:
-      - K6_OUT=json=/results/results.json
+      - K6_OUT=json=/jsonoutput/results.json
     volumes:
       - ./scripts:/scripts
-      - ./results:/results
+      - ./results:/jsonoutput
     depends_on:
       - splunk-kong
 
