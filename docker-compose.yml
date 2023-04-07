@@ -30,6 +30,21 @@ services:
     volumes:
       - .:/kong/declarative/
 
+  k6:
+    image: loadimpact/k6:latest
+    container_name: k6
+#    entrypoint: /bin/sh
+#    user: root
+    ports:
+      - "6565:6565"
+    environment:
+      - K6_OUT=json=/results/results.json
+    volumes:
+      - ./scripts:/scripts
+      - ./results:/results
+    depends_on:
+      - splunk-kong
+
   # Splunk Enterprise server
   splunk-kong:
     image: splunk/splunk:latest
