@@ -17,7 +17,7 @@ exporters:
     # Splunk index, optional name of the Splunk index targeted.
     index: "kong-metrics"
     # Maximum HTTP connections to use simultaneously when sending data. Defaults to 100.
-    max_connections: 20
+    # max_connections: 20
     # Whether to disable gzip compression over HTTP. Defaults to false.
     disable_compression: false
     # HTTP timeout when sending data. Defaults to 10s.
@@ -27,8 +27,12 @@ exporters:
     tls:
       insecure_skip_verify: true
 
-processors:
-    batch:
+#processors:
+#  transform/replace:
+#    metric_statements:
+#      - context: datapoint
+#        statements:
+#        - replace_pattern(kong.http_requests_total, "\\w+\_(.*)_\\w+", "$$1")
 
 extensions:
     health_check:
@@ -43,5 +47,5 @@ service:
     pipelines:
       metrics:
         receivers: [prometheus]
-        processors: [batch]
+        #processors: [transform/replace]
         exporters: [splunk_hec/metrics]

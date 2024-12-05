@@ -10,7 +10,7 @@ services:
 
   # Kong API gateway
   kong:
-    image: kong:3.1.1-ubuntu
+    image: kong/kong:latest-ubuntu
     container_name: kong-dbless
     environment:
       - KONG_DATABASE=off
@@ -70,7 +70,7 @@ services:
 
   # OpenTelemetry Collector
   otelcollector-kong:
-    image: quay.io/signalfx/splunk-otel-collector:0.71.0
+    image: quay.io/signalfx/splunk-otel-collector:0.113.0
     container_name: otelcollector-kong
     command: ["--config=/etc/otel-collector-config.yml", "--set=service.telemetry.logs.level=debug"]
     volumes:

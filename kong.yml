@@ -17,3 +17,12 @@
      latency_metrics: true
      bandwidth_metrics: true
      upstream_health_metrics: true
+ - name: http-log
+   service: flaskapi_service
+   config:
+     headers:
+       Authorization: Splunk 00000000-0000-0000-0000-0000000000000
+     http_endpoint: https://splunk-kong:8088/services/collector/raw
+     method: POST
+     timeout: 3000
+     retry_count: 1
